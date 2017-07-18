@@ -1,0 +1,827 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Simple LaTeX CV Template %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% NOTE: If you find that it says                                     %%
+%%                                                                    %%
+%%                           1 of ??                                  %%
+%%                                                                    %%
+%% at the bottom of your first page, this means that the AUX file     %%
+%% was not available when you ran LaTeX on this source. Simply RERUN  %%
+%% LaTeX to get the ``??'' replaced with the number of the last page  %%
+%% of the document. The AUX file will be generated on the first run   %%
+%% of LaTeX and used on the second run to fill in all of the          %%
+%% references.                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't like 10pt? Try 11pt or 12pt
+\documentclass[10pt]{article}
+\RequirePackage[T1]{fontenc}
+
+% LaTeX will typeset using Computer Modern Roman, which a lot of
+% non-mathematicians and non-engineers won't like. Also, a few PDF
+% viewers may not render CMR very well. Instead, Times New Roman can
+% be used. That's what this package does.
+\usepackage{mathptmx}
+
+% The automated optical recognition software used to digitize resume
+% information works best with fonts that do not have serifs. This
+% command uses a sans serif font throughout. Uncomment both lines (or at
+% least the second) to restore a Roman font (i.e., a font with serifs).
+% (NOTE: This requires the times package above)
+%\renewcommand{\familydefault}{\sfdefault}
+
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+
+% This package helps LaTeX auto-hyphenate hyphenated words if you use
+% special hyphens. For example, bio\-/mimicry will properly hyphenate
+% ``mimicry'' if necessary.
+\usepackage[shortcuts]{extdash}
+
+% Layout: Puts the section titles on left side of page
+\reversemarginpar
+
+%
+%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
+%
+% The next \usepackage line changes the layout for CV style section
+% headings as marginal notes. It also sets up the paper size as either
+% letter or A4. By default, letter was used. If A4 paper is desired,
+% comment out the letterpaper lines and uncomment the a4paper lines.
+%
+% As you can see, the margin widths and section title widths can be
+% easily adjusted.
+%
+% ALSO: Notice that the includefoot option can be commented OUT in order
+% to put the PAGE NUMBER *IN* the bottom margin. This will make the
+% effective text area larger.
+%
+% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
+% see the note about the +LP and -LP lines below. Comment out the +LP
+% and uncomment the -LP.
+%
+% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
+% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
+% below.
+%
+
+%% Use these lines for letter-sized paper
+\usepackage[paper=letterpaper,
+            %includefoot, % Uncomment to put page number above margin
+            marginparwidth=1.2in,     % Length of section titles
+            marginparsep=.05in,       % Space between titles and text
+            margin=1in,               % 1 inch margins
+            includemp]{geometry}
+
+%% Use these lines for A4-sized paper
+%\usepackage[paper=a4paper,
+%            %includefoot, % Uncomment to put page number above margin
+%            marginparwidth=30.5mm,    % Length of section titles
+%            marginparsep=1.5mm,       % Space between titles and text
+%            margin=25mm,              % 25mm margins
+%            includemp]{geometry}
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+% Provides special list environments and macros to create new ones
+\usepackage[shortlabels]{enumitem}
+
+% Simpler bibsections for CV sections
+% (thanks to natbib for inspiration)
+%
+% * For lists of references with hanging indents and no numbers:
+%
+%   \begin{bibsection}
+%       \item ...
+%   \end{bibsection}
+%
+% * For numbered lists of references (with hanging indents):
+%
+%   \begin{bibenum}
+%       \item ...
+%   \end{bibenum}
+%
+%   Note that bibenum numbers continuously throughout. To reset the
+%   counter, use
+%
+%   \restartlist{bibenum}
+%
+%   at the place where you want the numbering to reset.
+
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newlist{bibsection}{itemize}{3}
+\setlist[bibsection]{label=,leftmargin=\bibhang,%
+        itemindent=-\bibhang,
+        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
+        topsep=0pt}
+\newlist{bibenum}{enumerate}{3}
+\setlist[bibenum]{label=[\arabic*],resume,leftmargin={\bibhang+\widthof{[999]}},%
+        itemindent=-\bibhang,
+        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
+        topsep=0pt}
+\let\oldendbibenum\endbibenum
+\def\endbibenum{\oldendbibenum\vspace{-.6\baselineskip}}
+\let\oldendbibsection\endbibsection
+\def\endbibsection{\oldendbibsection\vspace{-.6\baselineskip}}
+\makeatother
+
+%% Reference the last page in the page number
+%
+% NOTE: comment the +LP line and uncomment the -LP line to have page
+%       numbers without the ``of ##'' last page reference)
+%
+% NOTE: uncomment the \pagestyle{empty} line to get rid of all page
+%       numbers (make sure includefoot is commented out above)
+%
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+%\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\newlength{\footpageshift}
+\setlength{\footpageshift}
+          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
+\lfoot{\hspace{\footpageshift}%
+       \parbox{4in}{\, \hfill %
+                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+%                    \arabic{page}                               % -LP
+                    \hfill \,}}
+
+% Finally, give us PDF bookmarks
+\usepackage{color,hyperref}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=darkblue,urlcolor=darkblue,
+            anchorcolor=darkblue,citecolor=darkblue}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% HEADING AT TOP OF CURRICULUM VITAE
+
+% The title (name) with a horizontal rule under it
+% (optional argument typesets an object right-justified across from name
+%  as well)
+%
+% Usage: \makeheading{name}
+%        OR
+%        \makeheading[right_object]{name}
+%
+% Place at top of document. It should be the first thing.
+% If ``right_object'' is provided in the square-braced optional
+% argument, it will be right justified on the same line as ``name'' at
+% the top of the CV. For example:
+%
+%       \makeheading[\emph{Curriculum vitae}]{Your Name}
+%
+% will put an emphasized ``Curriculum vitae'' at the top of the document
+% as a title. Likewise, a picture could be included:
+%
+%   \makeheading[{\includegraphics[height=1.5in]{my_picture}}]{Your Name}
+%
+% the picture will be flush right across from the name. For this example
+% to work, make sure the extra set of curly braces is included. Also
+% makes ure that \usepackage{graphicx} is somewhere in the preamble.
+\newcommand{\makeheading}[2][]%
+        {\hspace*{-\marginparsep minus \marginparwidth}%
+         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+             {\large \bfseries #2 \hfill #1}\\[-0.15\baselineskip]%
+                 \rule{\columnwidth}{1pt}%
+         \end{minipage}}
+
+%%% SECTION HEADINGS
+
+% The section headings. Flush left in small caps down pseudo-margin.
+%
+% Usage: \section{section name}
+\renewcommand{\section}[1]{\pagebreak[3]%
+    \vspace{1.3\baselineskip}%
+    \phantomsection\addcontentsline{toc}{section}{#1}%
+    \noindent\llap{\scshape\smash{\parbox[t]{\marginparwidth}{\hyphenpenalty=10000\raggedright #1}}}%
+    \vspace{-\baselineskip}\par}
+
+%%% LISTS
+
+% This macro alters a list by removing some of the space that follows the list
+% (is used by lists below)
+\newcommand*\fixendlist[1]{%
+    \expandafter\let\csname preFixEndListend#1\expandafter\endcsname\csname end#1\endcsname
+    \expandafter\def\csname end#1\endcsname{\csname preFixEndListend#1\endcsname\vspace{-0.6\baselineskip}}}
+
+% These macros help ensure that items in outer-type lists do not get
+% separated from the next line by a page break
+% (they are used by lists below)
+\let\originalItem\item
+\newcommand*\fixouterlist[1]{%
+    \expandafter\let\csname preFixOuterList#1\expandafter\endcsname\csname #1\endcsname
+    \expandafter\def\csname #1\endcsname{\let\oldItem\item\def\item{\pagebreak[2]\oldItem}\csname preFixOuterList#1\endcsname}
+    \expandafter\let\csname preFixOuterListend#1\expandafter\endcsname\csname end#1\endcsname
+    \expandafter\def\csname end#1\endcsname{\let\item\oldItem\csname preFixOuterListend#1\endcsname}}
+\newcommand*\fixinnerlist[1]{%
+    \expandafter\let\csname preFixInnerList#1\expandafter\endcsname\csname #1\endcsname
+    \expandafter\def\csname #1\endcsname{\let\oldItem\item\let\item\originalItem\csname preFixInnerList#1\endcsname}
+    \expandafter\let\csname preFixInnerListend#1\expandafter\endcsname\csname end#1\endcsname
+    \expandafter\def\csname end#1\endcsname{\csname preFixInnerListend#1\endcsname\let\item\oldItem}}
+
+% An itemize-style list with lots of space between items
+%
+% Usage:
+%   \begin{outerlist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{outerlist}
+\newlist{outerlist}{itemize}{3}
+    \setlist[outerlist]{label=\enskip\textbullet,leftmargin=*}
+    \fixendlist{outerlist}
+    \fixouterlist{outerlist}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section
+%
+% Usage:
+%   \begin{lonelist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{lonelist}
+\newlist{lonelist}{itemize}{3}
+    \setlist[lonelist]{label=\enskip\textbullet,leftmargin=*,partopsep=0pt,topsep=0pt}
+    \fixendlist{lonelist}
+    \fixouterlist{lonelist}
+
+% An itemize-style list with little space between items
+%
+% Usage:
+%   \begin{innerlist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{innerlist}
+\newlist{innerlist}{itemize}{3}
+    \setlist[innerlist]{label=\enskip\textbullet,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt}
+    \fixinnerlist{innerlist}
+
+% An environment IDENTICAL to innerlist that has better pre-list spacing
+% when used as the first thing in a \section
+%
+% Usage:
+%   \begin{loneinnerlist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{loneinnerlist}
+\newlist{loneinnerlist}{itemize}{3}
+    \setlist[loneinnerlist]{label=\enskip\textbullet,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt}
+    \fixendlist{loneinnerlist}
+    \fixinnerlist{loneinnerlist}
+
+%%% EXTRA SPACE
+
+% To add some paragraph space between lines.
+% This also tells LaTeX to preferably break a page on one of these gaps
+% if there is a needed pagebreak nearby.
+\newcommand{\blankline}{\quad\pagebreak[3]}
+\newcommand{\halfblankline}{\quad\vspace{-0.5\baselineskip}\pagebreak[3]}
+
+%%% FORMATTING MACROS
+
+% Provides a linked \doi{#1} that links doi:#1 to http://dx.doi.org/#1
+\usepackage{doi}
+% To change the text before the DOI, adjust this command
+%\renewcommand\doitext{doi:}
+
+% Provides a linked \url{#1} that doesn't require escape characters
+\usepackage{url}
+
+% You can adjust the style \url{} uses here:
+% (options are: same, rm, sf, tt; defaults to tt)
+\urlstyle{same}
+
+% For \email{ADDRESS}, links ADDRESS to the url mailto:ADDRESS
+% (uncomment to typeset the e\-/mail address in typewriter font;
+%  otherwise, will be typeset in the \urlstyle above)
+%\DeclareUrlCommand\emaillink{\urlstyle{tt}}
+\providecommand*\emaillink[1]{\nolinkurl{#1}}
+\providecommand*\email[1]{\href{mailto:#1}{\emaillink{#1}}}
+
+\providecommand\BibTeX{{B\kern-.05em{\sc i\kern-.025em b}\kern-.08em \TeX}}
+\providecommand\Matlab{\textsc{Matlab}}
+
+% Custom hyphenation rules for words that LaTeX has trouble with
+\hyphenation{bio-mim-ic-ry bio-in-spi-ra-tion re-us-a-ble pro-vid-er Media-Wiki}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\makeheading{Hasan ~T.~Abbas}
+
+\section{Contact Information}
+
+% NOTE: Mind where the & separators and \\ breaks are in the following
+%       table. Table is one row made up of three parboxes. The left
+%       parbox has address info, the middle parbox has a vertical bar,
+%       and the right parbox has phone and electronic contact
+%       information.
+%
+% MACROS: \rcollength is the width of the right column of the table
+%             (adjust it to your liking; default is 1.85in).
+%         \spacewidth is width of area between left and right boxes.
+%
+\newlength{\rcollength}\setlength{\rcollength}{1.85in}%
+\newlength{\spacewidth}\setlength{\spacewidth}{20pt}
+%
+\begin{tabular}[t]{@{}p{\textwidth-\rcollength-\spacewidth}@{}p{\spacewidth}@{}p{\rcollength}}%
+
+% Address box
+\parbox{\textwidth-\rcollength-\spacewidth}{%
+PhD Electrical Engineering\\
+\href{http://www.tamu.edu/}{Texas A\& M University}\\
+\href{http://engineering.tamu.edu/electrical}{Department of Electrical \& Computer Engineering}\\
+212-H WEB Texas A\&M University\\
+College Station, TX 77843-3128, USA }
+
+
+% Uncomment to add a vertical bar in middle of contact information
+%{\vrule width 0.5pt}
+\parbox[m][5\baselineskip]{\spacewidth}{} &
+
+% Non-snail-mail contact information
+\parbox{\rcollength}{%
+\textit{Cell:} +1-979-422-5347 \\
+\textit{Fax:} +1-979-845-6259 \\
+\textit{E-mail:} \email{hasantahir@tamu.edu}\\
+\textit{Website:} \href{http://www.hasantahir.github.io}{hasantahir.github.io}
+}
+
+\end{tabular}
+
+%%
+%% In modern CV's, it seems like ``Objective'' is frowned upon. Instead,
+%% incorporate it into a well-constructed cover letter. The ``More
+%% information'' can go at the end of the CV, but it should not distract
+%% from the section giving references available to contact.
+%%
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% OBJECTIVE
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Objective}
+
+Placement in an academic position (i.e., faculty, postdoctoral, or
+research scientist) that allows for advanced research in terahertz plasmonics (i.e., modeling, analysis, design, and verification) with a particular focus on the thin-layered semiconductor and graphene structures.
+% \begin{innerlist}
+% \item More information and auxiliary documents can be found at\\\url{http://www.tedpavlic.com/facjobsearch/}
+% \end{innerlist}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% EDUCATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Education}
+
+\href{http://www.tamu.edu/}\textbf{{Texas A\& M University}},
+College Station, TX
+\begin{outerlist}
+
+\item[] Ph.D.,
+        \href{http://engineering.tamu.edu/electrical/}
+             {Electrical and Computer Engineering},
+             August 2012 - August 2017
+        \begin{innerlist}
+
+        \item Dissertation: \emph{Plasmonic Devices in the Terahertz and Optical Frequency domains}
+        \item Adviser:
+              \href{http://engineering.tamu.edu/electrical/people/rnevels}
+                   {Professor Robert D. Nevels}
+        \item GPA 4.0
+        \item Area of Study: Numerical Electromagnetics and Plasmonics
+        \end{innerlist}
+\end{outerlist}
+\halfblankline
+\halfblankline
+
+\href{http://uet.edu.pk/}\textbf{{University of Engineering \& Technology}},
+Lahore, Pakistan
+\begin{outerlist}
+\item[] B.Sc.,
+        \href{http://uet.edu.pk/faculties/facultiesinfo/department?RID=introduction&id=9}
+             {Electrical Engineering}, July 2009
+        \begin{innerlist}
+        \item With Honors (absolute marks 76.4\%)
+        \item Electrical specialization (emphasis in Telecommunication and Computer Science)
+        \end{innerlist}
+
+\end{outerlist}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% RESEARCH INTERESTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Research Interests}
+
+\textbf{Electromagnetics,
+Plasmonics, Numerical Electromagnetics, Miniaturized on-chip Antennas,
+Nanophotonics, Two-dimensional Physics and materials}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% WORK EXPERIENCE
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Current Academic Appointments}
+
+\textbf{Fulbright Scholar},
+            \href{http://www.tamu.edu/}{Texas A\& M University}
+            \hfill {August 2012 to August 2017}
+\begin{innerlist}
+
+    \item[] \href{http://engineering.tamu.edu/electrical}{Department of Electrical \& Computer Engineering}
+    \begin{innerlist}
+        \item Affiliations:
+            \begin{innerlist}
+                \item \href{http://ee.tamu.edu/~eml/}{Electromagnetics and Microwave Laboratory}
+                \item \href{http://iqse.tamu.edu/}{Institute of Quantum Science and Engineering}
+            \end{innerlist}
+    \end{innerlist}
+
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Instructor},
+            \href{http://www.tamu.edu/}{Texas A\& M University}
+            \hfill {August 2014 to present}
+\begin{innerlist}
+        \item Courses:
+            \begin{innerlist}
+                \item \href{http://ee.tamu.edu/~eml/}{Electric and Magnetic Fields}
+                \item \href{http://iqse.tamu.edu/}{Applied Electromagnetic Theory}
+            \end{innerlist}
+\end{innerlist}
+
+\section{Previous Academic Appointments}
+
+\textbf{Lecturer},
+            \href{http://www.uet.edu.pk/}{University of Engineering \& Technology,
+                                        Lahore, Pakistan}
+            \hfill {August 2009 to August 2012}
+\begin{innerlist}
+
+    \item[] \href{http://www.uet.edu.pk/faculties/facultiesinfo/department?RID=introduction&id=30}{Department of Electrical Engineering \& Technology}
+    \begin{innerlist}
+        \item Courses:
+            \begin{innerlist}
+                \item {Electromagnetic Theory}
+                \item {Antennas and Wave Propagation}
+                \item {Applied Electromagnetics}
+            \end{innerlist}
+        \item Laboratories:
+            \begin{innerlist}
+                \item {Microwave and Antennas Laboratory}
+                \item {Communication Systems}
+            \end{innerlist}
+    \end{innerlist}
+
+\end{innerlist}
+
+\halfblankline
+
+
+% \section{Submitted Journal Publications}
+%
+% % Add a little space to nudge next ``Ref'd Journal Publications'' marginpar
+% % down to make room for tall ``Submitted Journal Publications''
+% % marginpar. If there are enough submitted journal publications, this
+% % space will not be needed (and should be removed).
+% \vspace{0.1in}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLICATIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Book Chapters}
+
+\begin{bibenum}
+    \item[2015]Robert D. Nevels, Hasan Tahir Abbas, ``Optical Nanoantennas'', In Chapter in Handbook of Antenna Technologies, Springer Singapore, pp. 1-33, 2015.
+\end{bibenum}
+
+% Add a little space to nudge next ``Conference Publications'' marginpar
+% down to make room for tall ``Submitted Conference Publications''
+% marginpar. If there are enough submitted journal publications, this
+% space will not be needed (and should be removed).
+\vspace{0.1in}
+
+\section{Journal Publications}
+
+\item[2017] H.T., Abbas, X., Zeng, M., AlAmri, R.D., Nevels, M.S., Zubairy, ``Nanoscopy using a semiconductor heterostructure as the sample stage'', submitted in Optics Express, 2017.
+\vspace{0.1in}
+
+\section{Conference Publications}
+
+\begin{bibenum}
+
+\item[2017] H.T., Abbas, R.D., Nevels, ``An Integral Equation Scheme for Plasma based Thin Sheets'', In Antennas and Propagation \& USNC/URSI National Radio Science Meeting, 2017 IEEE International Symposium on.
+\item[2017] H.T., Abbas, R.D., Nevels, K.A., Michalski , ``Plasma based Terahertz devices'', Wireless \& Microwave Circuits \& Systems, 2017 IEEE Texas Symposium on.
+\item[2016] H.T., Abbas, R.D., Nevels, ``Plasma based integrated on-chip antenna'', In Antennas and Propagation \& USNC/URSI National Radio Science Meeting, 2016 IEEE International Symposium on, pp. 1645-1646, 2016.
+\item[2015] J., Shin, H.T., Abbas, R.D., Nevels, ``A numerical method for the electromagnetic field time domain propagator equations'', In Antennas and Propagation \& USNC/URSI National Radio Science Meeting, 2015 IEEE International Symposium on, pp. 1480-1481, 2015.
+\item[2015] J., Shin, H.T., Abbas, R.D., Nevels, ``A numerical method for the electromagnetic field time domain propagator equations'', In Antennas and Propagation \& USNC/URSI National Radio Science Meeting, 2015 IEEE International Symposium on, pp. 1480-1481, 2015.
+\item[2015] H.T., Abbas, J., Shin, R.D., Nevels, ``Numerical techniques for evaluating electromagnetic field propagators'', In Computational Electromagnetics (ICCEM), 2015 IEEE International Conference on, pp. 22-23, 2015.
+\item[2014] R.D., Nevels, K.A., Michalski, H.T., Abbas, ``Plasmonic and surface wave propagation in boundary layers in the microwave, THz, and optical regimes'', In Antenna Measurements \& Applications (CAMA), 2014 IEEE Conference on, pp. 1-3, 2014.
+
+\end{bibenum}
+
+\section{Conference Talks}
+
+\begin{bibenum}
+
+    \item R.D. Nevels, K.A. Michalski, and H.T. Abbas
+       Complex Plane Interpretation of Nano-Aperture Excited Plasmon Waves.
+        In: \emph{University of Electronic Science and Technology China (UESTC) National Summer School}, Chengdu, China, July, 2015.
+
+    \item R.D. Nevels, and H.T. Abbas
+        A decomposition and interpretation of plasma and plasmonic waves.
+        In: \emph{Institute for Quantum Science and Engineering Workshop}, College Station, TX, January 13--14, 2015.
+
+    \item R.D. Nevels, L. Kish, and H.T. Abbas
+        Twisted Waves: Concept and Limitations.
+        In: \emph{2013 IEEE AP-S/USNC-URSI Symposium}, Orlando, FL, July 7--13, 2013.
+
+\end{bibenum}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% TEACHING EXPERIENCE
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Teaching Experience}
+
+\href{http://www.tamu.edu/}{\textbf{Texas A\&M University}},
+College Station, TX
+\begin{outerlist}
+
+\item[] \textit{Substitute Lecturer} \hfill \textbf{January 2016}
+    \begin{innerlist}
+        \item ECEN~322: Electric and Magnetic Fields
+        \begin{innerlist}
+            \item Undergraduate course
+            \item Main instructor: Robert D. Nevels
+        \end{innerlist}
+    \end{innerlist}
+
+\item[] \textit{Substitute Lecturer} \hfill \textbf{October 2015}
+    \begin{innerlist}
+        \item ECEN~445: Applied Electromagnetic Theory
+        \begin{innerlist}
+            \item Undergraduate course
+            \item Main instructor: Robert D. Nevels
+        \end{innerlist}
+    \end{innerlist}
+
+\item[] \textit{Substitute Lecturer} \hfill \textbf{January 2015}
+    \begin{innerlist}
+        \item ECEN~351: Applied Electromagnetics
+        \begin{innerlist}
+            \item Undergraduate course
+            \item Main instructor: Robert D. Nevels
+        \end{innerlist}
+    \end{innerlist}
+
+\end{outerlist}
+
+\halfblankline
+
+\href{http://www.uet.edu.pk/}{\textbf{University of Engineering \& Technology}},
+KSK Campus, Pakistan
+\begin{outerlist}
+
+\item[] \textit{Lecturer}%
+    \hfill \textbf{August 2009 to August 2012}
+    \begin{innerlist}
+        \item Instructor for EE~480: Antennas and Propagation
+        \item Instructor for EE~380: Electromagnetic Theory
+        \item Instructor for EE~381: Applied Electromagnetic Theory
+    \end{innerlist}
+
+\item[] \textit{Lab In-charge}
+    \hfill \textbf{December 2009 to August 2012}\\
+    \begin{innerlist}
+        \item Set up Microwave and Antennas Laboratory
+        \item Authored Antennas lab manual
+        \end{innerlist}
+
+        \item Lab Instructor for EE~360: Communication Systems
+        \begin{innerlist}
+            \item Spring 2012
+        \end{innerlist}
+\end{outerlist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% AWARD
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Honors}
+
+
+\href{http://foreign.fulbrightonline.org/}{Fulbright Foreign Student}
+\begin{innerlist}
+    \item {Pursue Doctoral Degree at Texas A\&M University}, 2012--2017
+
+\end{innerlist}
+
+{Best Young Faculty}
+\begin{innerlist}
+    \item Department of Electrical Engineering \& Technology, UET Lahore, Pakistan, 2010-2011
+\end{innerlist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% SERVICE
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Professional Service}
+
+\textbf{Professional Memberships}
+\begin{innerlist}
+    \item IEEE Antennas \& Propagation Society
+    \item IEEE Microwave Theory \& Techniques Society
+    \item American Physical Society
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Referee Service}
+\begin{innerlist}
+    \item \emph{IEEE Antennas and Wireless Propagation Letters}
+    \item \emph{IEEE Transactions on Antennas and Propagation}
+    \item \emph{American Journal of Physics}
+\end{innerlist}
+
+\halfblankline
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% SKILLS
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Software and Hardware Skills}
+
+
+
+Computer Programming:
+%
+\begin{innerlist}
+    \item C, C$+$$+$
+\end{innerlist}
+
+\halfblankline
+
+Numerical Analysis:
+%
+\begin{innerlist}
+    \item \Matlab, Python
+\end{innerlist}
+
+\halfblankline
+
+Desktop Editing and Productivity Software:
+%
+\begin{innerlist}
+    \item Atom, Git
+    \item \TeX{} (\LaTeX{}, \BibTeX{}, PSTricks),
+    \item Microsoft Office, Google Docs
+    \item TikZ, InkScape
+\end{innerlist}
+
+\halfblankline
+
+Operating Systems:
+%
+\begin{innerlist}
+    \item Microsoft Windows family, Linux (Ubuntu)
+\end{innerlist}
+
+\section{Expertise}
+
+Mathematics:
+%
+\begin{innerlist}
+    \item PDE, Stability Analysis, Linear Algebra, Fourier Transforms
+\end{innerlist}
+
+\halfblankline
+
+Embedded and Real\-/time Systems:
+%
+\begin{innerlist}
+    \item Software and hardware development with several MCU and
+        DSP platforms (e.g., Atmel ATmega MCU's, Microchip PIC MCU's, Arduino and others)
+\end{innerlist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% ACADEMIC SERVICE
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Student Mentoring}
+
+\begin{bibsection}
+
+    \item \textbf{Usman Samad}\\
+        Undergraduate student in Electrical and Computer Engineering, Texas A\&M University.
+        Modeling and Implementation of a Home Automation System
+        2015.
+
+\end{bibsection}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% REFERENCS
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{References Available to Contact}
+
+Furnished upon request.
+% \href
+% {http://engineering.tamu.edu/electrical/people/rnevels}
+% {\textbf{Dr.~Robert D.~Nevels}}
+% (e\-/mail:~\href{mailto:nevels@ece.tamu.edu}{nevels@ece.tamu.edu}; phone:~+1-979-845-7591)
+% %
+% \begin{innerlist}
+%     \item Professor,
+%         \href{http://engineering.tamu.edu/electrical/}{Department of Electrical \& Computer Engineering},
+%         \href{http://www.tamu.edu/}{Texas A\&M University}
+%
+%     \item[$\diamond$] 205K WEB, Texas A\&M University, College Station, TX
+%         77843-3128
+%
+%     \item[$\star$] \emph{Dr.~Nevels is my doctoral supervisor.}
+% \end{innerlist}
+%
+% \halfblankline
+%
+% \textbf{Dr.~Kai ~Chang}
+% (e\-/mail:~\href{mailto:kaichang@tamu.edu}{kaichang@tamu.edu}; phone:~+1-979-845-5285)
+% %
+% \begin{innerlist}
+%     \item Professor,
+%         \href{http://engineering.tamu.edu/electrical/}{Department of Electrical \& Computer Engineering},
+%         \href{http://www.tamu.edu/}{Texas A\&M University}
+%
+%     \item[$\diamond$] 205C WEB, Texas A\&M University, College Station, TX
+%         77843-3128
+%
+%     \item[$\star$] \emph{Dr.~Chang has been my graduate courses teacher.}
+% \end{innerlist}
+
+% \halfblankline
+%
+%
+%
+% \halfblankline
+
+% \nobibliography{my_citations}
+
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% End CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------%
+% The following is copyright and licensing information for
+% redistribution of this LaTeX source code; it also includes a liability
+% statement. If this source code is not being redistributed to others,
+% it may be omitted. It has no effect on the function of the above code.
+%----------------------------------------------------------------------%
+% Copyright (c) 2007, 2008, 2009, 2010, 2011 by Theodore P. Pavlic
+%
+% Unless otherwise expressly stated, this work is licensed under the
+% Creative Commons Attribution-Noncommercial 3.0 United States License. To
+% view a copy of this license, visit
+% http://creativecommons.org/licenses/by-nc/3.0/us/ or send a letter to
+% Creative Commons, 171 Second Street, Suite 300, San Francisco,
+% California, 94105, USA.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+% OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+% MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+% IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+% CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+% TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+%----------------------------------------------------------------------%
