@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.7.3)  9 AUG 2017 17:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.7.3)  9 AUG 2017 17:15
 entering extended mode
-**./hasan-cv-07-2017.tex
-(hasan-cv-07-2017.tex
+**./hasan-cv-08-2017.tex
+(hasan-cv-08-2017.tex
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 75 language(s) loaded.
 
@@ -9,9 +9,9 @@ Babel <3.10> and hyphenation patterns for 75 language(s) loaded.
 cls"
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
-("C:\Users\hasantahir\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size10.c
+("C:\Users\hasantahir\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size11.c
 lo"
-File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -316,8 +316,8 @@ Package hyperref Info: Option `breaklinks' set `true' on input line 164.
 
 ("C:\Users\hasantahir\AppData\Local\Programs\MiKTeX 2.9\tex\latex\doi\doi.sty"
 Package: doi 2007/07/24 handle doi numbers
-) (hasan-cv-07-2017.aux)
-\openout1 = `hasan-cv-07-2017.aux'.
+) (hasan-cv-08-2017.aux)
+\openout1 = `hasan-cv-08-2017.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 321.
 LaTeX Font Info:    ... okay on input line 321.
@@ -360,12 +360,12 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 * \topmargin=-37.0pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=10.0pt
+* \topskip=11.0pt
 * \footskip=30.0pt
 * \marginparwidth=86.72377pt
 * \marginparsep=3.61371pt
 * \columnsep=10.0pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -410,9 +410,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 321.
 LaTeX Info: Redefining \pageref on input line 321.
 LaTeX Info: Redefining \nameref on input line 321.
- (hasan-cv-07-2017.out) (hasan-cv-07-2017.out)
+ (hasan-cv-08-2017.out) (hasan-cv-08-2017.out)
 \@outlinefile=\write3
-\openout3 = `hasan-cv-07-2017.out'.
+\openout3 = `hasan-cv-08-2017.out'.
 
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 322.
@@ -453,9 +453,9 @@ LaTeX Font Info:    Try loading font information for OT1+ptm on input line 339.
 .fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 339.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 339.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 339.
@@ -464,7 +464,7 @@ Overfull \hbox (113.69994pt too wide) in paragraph at lines 360--361
 []$[]$ 
  []
 
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 391.
 LaTeX Font Info:    Try loading font information for OMS+ptm on input line 394.
 
@@ -473,7 +473,7 @@ LaTeX Font Info:    Try loading font information for OMS+ptm on input line 394.
 .fd"
 File: omsptm.fd 
 )
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 394.
  [1
 
@@ -495,30 +495,30 @@ Underfull \hbox (badness 10000) detected at line 530
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 620--623
+Underfull \hbox (badness 10000) in paragraph at lines 617--620
 
  []
 
 [3] 
 AED: lastpage setting LastPage
 [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 801.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 801.
- (hasan-cv-07-2017.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 801.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 801.
-Package rerunfilecheck Info: File `hasan-cv-07-2017.out' has not changed.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 798.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 798.
+ (hasan-cv-08-2017.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 798.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 798.
+Package rerunfilecheck Info: File `hasan-cv-08-2017.out' has not changed.
 (rerunfilecheck)             Checksum: 36E598BAE2CB4576277BC5F811F6D7F4;961.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 801.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 798.
  ) 
 Here is how much of TeX's memory you used:
- 6352 strings out of 493323
- 95856 string characters out of 3127846
- 191772 words of memory out of 3000000
- 9789 multiletter control sequences out of 15000+200000
- 33621 words of font info for 47 fonts, out of 3000000 for 9000
+ 6354 strings out of 493323
+ 95917 string characters out of 3127846
+ 190793 words of memory out of 3000000
+ 9791 multiletter control sequences out of 15000+200000
+ 34184 words of font info for 49 fonts, out of 3000000 for 9000
  1146 hyphenation exceptions out of 8191
- 28i,14n,43p,293b,551s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,13n,43p,293b,623s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/hasantahir/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8
 r.enc}<C:/Users/hasantahir/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmr10.pfb><C:/Users/hasantahir/AppData/Local/Programs/MiKTeX 2.9/f
@@ -526,7 +526,7 @@ onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/hasantahir/AppData/Local/Pro
 grams/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/hasantahir/AppData/
 Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/hasantahir
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on hasan-cv-07-2017.pdf (4 pages, 87068 bytes).
+Output written on hasan-cv-08-2017.pdf (4 pages, 87092 bytes).
 PDF statistics:
  142 PDF objects out of 1000 (max. 8388607)
  25 named destinations out of 1000 (max. 500000)
